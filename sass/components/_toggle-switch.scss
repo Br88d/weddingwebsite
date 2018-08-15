@@ -1,0 +1,173 @@
+
+$num-of-tabs: 3;
+
+@mixin tabs-3 {
+	@for $i from 1 through $num-of-tabs {
+		&:nth-of-type(#{$i}) {
+			&.checked {
+				~ .slide {
+					left: calc((100% / #{$num-of-tabs}) * #{$i - 1});
+				}
+			}
+		}
+	}
+}
+
+
+.tab-wrap {
+	@include display-flex;
+	position: relative;
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 1px solid #EAEAEA;
+	width: 100%;
+	border-radius: 2px;
+	margin: u(2) auto;
+	overflow: hidden;
+	max-width: 420px;
+}
+
+
+.tab {
+	@include display-flex;
+	@include flex-justify-content(center);
+	@include flex-align-items(center);
+	@include tabs-3;
+	cursor: pointer;
+	color: $color-body;
+	padding: u(1) 0;
+	transition: color 0.2s ease;
+	width: 100%;
+	text-align: center;
+	z-index: 2;
+	font-size: 14px;
+
+	&.checked {
+		color: $color-white;
+	}
+
+	&:first-child {
+		&.checked {
+			~ .slide {
+				left: 0;
+			}
+		}
+	}
+}
+
+.slide {
+	background: $color-pink;
+	width: calc(100% / #{$num-of-tabs});
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: left 0.3s ease-out;
+}
+
+
+
+.tab-content {
+	display: none;
+    transition: .2s ease;
+
+	&.checked {
+		display: block;
+	}
+}
+
+
+
+
+
+//Tabs 4
+
+@mixin tabs-4 {
+	@for $i from 1 through 4 {
+		&:nth-of-type(#{$i}) {
+			&.checked {
+				~ .slide {
+					left: calc((100% / 4) * #{$i - 1});
+				}
+			}
+		}
+	}
+}
+
+
+
+
+.section-directions {
+	.tab {
+		@include tabs-4;
+	}
+
+	.slide {
+		width: calc(100% / 4);
+	}
+}
+
+
+
+
+//dark bg
+.section-menu {
+
+	.slide {
+		background: $color-white;
+		width: calc(100% / 4);
+	}
+
+	.tab {
+		color: $color-white;
+		@include tabs-4;
+
+		&.checked {
+			color: $color-heading;
+		}
+	}
+
+	.tab-wrap {
+		border: 1px solid transparent;
+	}
+}
+
+
+
+
+
+
+@media screen and (min-width: $screen-large) {
+	.tab-content {
+		@include flex(0, 0, 27%);
+		@include display-flex;
+
+		&.checked {
+			@include display-flex;
+		}
+
+		&.four-items {
+			@include flex(0, 0, 23%);
+		}
+	}
+
+	.tab-wrap {
+		display: none;
+	}
+
+	.content-wrap {
+		@include display-flex;
+		@include flex-justify-content(space-around);
+	    margin-top: u(4);
+	}
+
+	.box {
+		width: 100%;
+	}
+
+	.section-directions {
+		@include flex-justify-content(space-between);
+	}
+}
+
+
+

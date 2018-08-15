@@ -1,0 +1,120 @@
+
+
+@mixin display-flex {
+    display: -ms-flexbox;       // ie10 / ie-mobile (partial support)
+    display: -moz-box;          // firefox ancient - firefox 2-27 / android 2 (partial support)
+    display: -moz-flex;         // firefox old / 2-21
+    display: -webkit-box;       // webkit ancient - safari 3.1-6, ios 6-, bb 7 (partial support)
+    display: -webkit-flex;      // webkit old - safari 6.1 / ios 7.1+, bb 10, android 2-4.3
+    display: flex;              // firefox 28, chrome 21, safari 6.1, opera 12.1 / ios 9.2, android 4.4, bb 10, opera mini
+}
+
+@mixin flex($grow, $shrink, $basis) {
+    -ms-flex: $grow $shrink $basis;
+    -ms-flexbox: $grow $shrink $basis;
+    -moz-box-flex: $grow;                   // firefox ancient only supports "grow"
+    -moz-flex: $grow $shrink $basis;
+    -webkit-box-flex: $grow;                // webkit ancient - only supports "grow"
+    -webkit-flex: $grow $shrink $basis;
+    flex: $grow $shrink $basis;
+}
+
+@mixin flex-wrap {
+    -ms-flex-wrap: wrap;
+    -moz-box-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+// @todo not in use yet, never tested
+@mixin flex-nowrap {
+    -ms-flex-wrap: none;
+    flex-wrap: nowrap;
+}
+
+
+// @todo check attribute values in ie10
+@mixin flex-direction($direction) {
+    -ms-flex-direction: $direction;
+    -moz-box-direction: $direction;        // firefox ancient - not (quite) supported?
+    -moz-flex-direction: $direction;
+    -webkit-box-direction: $direction;      // webkit ancient - not all directions suppoerted
+    -webkit-flex-direction: $direction;
+    flex-direction: $direction;
+}
+
+@mixin flex-justify-content($align) {
+    @if $align == 'flex-start' {
+        -ms-flex-pack: 'start';
+    } @else if $align == 'flex-end' {
+        -ms-flex-pack: 'end';
+    } @else if $align == 'center' {
+        -ms-flex-pack: $align;
+    } @else if $align == 'space-between' {
+        -ms-flex-pack: 'justify';
+    } @else if $align == 'space-around' {
+        -ms-flex-pack: 'distribute';
+    }
+    -ms-justify-content: $align;
+    -moz-box-pack: $align;
+    -moz-justify-content: $align;
+    -webkit-justify-content: $align;
+    justify-content: $align;
+}
+
+@mixin flex-align-items($align) {
+    @if $align == 'flex-start' {
+        -ms-flex-align: 'start';
+    } @else if $align == 'flex-end' {
+        -ms-flex-align: 'end';
+    } @else if $align == 'center' {
+        -ms-flex-align: 'center';
+    } @else if $align == 'baseline' {
+        -ms-flex-align: 'baseline';
+    } @else if $align == 'stretch' {
+        -ms-flex-align: $align;
+    }
+    -ms-align-items: $align;
+    -moz-box-align: $align;
+    -moz-align-items: $align;
+    -webkit-align-items: $align;
+    align-items: $align;
+}
+
+@mixin flex-align-content($align) {
+    @if $align == 'flex-start' {
+        -ms-flex-line-pack: 'start';
+    } @else if $align == 'flex-end' {
+        -ms-flex-line-pack: 'end';
+    } @else if $align == 'center' {
+        -ms-flex-line-pack: 'center';
+    } @else if $align == 'space-between' {
+        -ms-flex-line-pack: 'justify';
+    } @else if $align == 'space-around' {
+        -ms-flex-line-pack: 'distribute';
+    } @else if $align == 'stretch' {
+        -ms-flex-line-pack: $align;
+    }
+    -ms-align-content: $align;
+    -moz-align-content: $align;
+    -webkit-align-content: $align;
+    align-content: $align;
+}
+
+// @todo check ie10 attribute values
+@mixin flex-align-self ($value) {
+    -ms-flex-item-align: $value;
+    -ms-align-self: $value;
+    -moz-align-self: $value;
+    -webkit-align-self: $value;
+    align-self: $value;
+}
+
+@mixin flex-order($int: 0) {
+    order: $int;
+    -webkit-box-ordinal-group: $int + 1;
+    -webkit-order: $int;
+    -moz-order: $int;
+    -ms-flex-order: $int;
+}

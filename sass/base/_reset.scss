@@ -1,0 +1,163 @@
+// -- box-sizing
+
+html {
+    overflow-x: hidden;
+    height: 100%;
+    margin: 0 auto;
+    font-size: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; // android 2.1-3.x
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+* {
+    box-sizing: inherit;
+    -webkit-box-sizing: border-box; //Android 2.1-3.x
+
+    ::before,
+    ::after {
+        box-sizing: inherit;
+        -webkit-box-sizing: border-box; //Android 2.1-3.x
+    }
+}
+
+
+// -- body
+
+body {
+    margin: 0;
+    font: 16px/1 sans-serif;
+    line-height: $type-height-base;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: $color-body;
+    font-family: $body-font;
+    background-color: $color-white;
+}
+
+
+
+// -- typography
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+figure,
+ol,
+dl,
+dt,
+dd,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: block;
+}
+
+ul,
+ol {
+    display: block;
+    list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+button  {
+    vertical-align: middle;
+    border: 0;
+    border-style: solid;
+    -webkit-appearance: button;
+}
+
+select {
+    overflow: auto;
+    border-radius: 0;
+}
+
+input {
+
+    &[type="button"],
+    &[type="reset"],
+    &[type="submit"] {
+        vertical-align: middle;
+        border: 0;
+        border-style: solid;
+        -webkit-appearance: button;
+    }
+
+    &[type="number"] {
+        -moz-appearance: textfield;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            margin: 0;
+            -webkit-appearance: none;
+        }
+    }
+}
+
+// - ie10
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    input {
+        &:-ms-clear {
+            display: none;
+        }
+
+        &:-ms-reveal {
+            width: 0;
+            height: 0;
+        }
+    }
+}
+
+
+// -- focus
+
+::-moz-focus-inner {
+    padding: none;
+    border: 0;
+}
+
+:focus {
+    outline: 0;
+}
+
+
+// -- misc
+
+img {
+    overflow-x: hidden;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+

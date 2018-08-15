@@ -1,0 +1,82 @@
+
+
+// -- units
+
+$base-unit: 12px;
+
+@function u($n) {
+    @return $n * $base-unit;
+}
+
+
+// -- colours
+
+
+$color-pink: #FB548C;
+$color-body: #666A71;
+$color-light-body: #9CA4AA;
+$color-heading: #00142E;
+$color-border: #DEDEDE;
+$color-white: #FFFFFF;
+$color-black: #000000;
+
+$color-bg: #F9F9F9;
+
+
+
+
+// -- layout
+
+$layout-gutter: u(2);
+
+
+
+// -- screen sizes
+
+$screen-small: 480px;
+$screen-medium: 769px;
+$screen-large: 1024px;
+$screen-huge: 1960px;
+
+
+
+// -- page width
+
+$page-width: 1200px;
+
+
+
+
+// -- typography
+
+$body-font: 'SFCompactDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+
+$header-font: 'pacificoregular', 'Helvetica Neue', Arial, sans-serif;
+
+// -- line height
+
+$type-height-base: 1.4;
+
+$type-height-large: 1.3;
+$type-height-medium: 1.2;
+$type-height-small: 1.1;
+
+$type-weight-regular: 400;
+$type-weight-bold: 700;
+$type-weight-light: 300;
+
+
+
+
+// -- bordewr radius
+
+$border-radius: 2px;
+
+
+
+
+// -- 100% vertical height
+
+$site-height: 100vh;
+
+

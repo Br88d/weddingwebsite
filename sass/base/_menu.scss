@@ -1,0 +1,250 @@
+
+$cubic: "cubic-bezier(.77,.06,.28,.85)";
+$menu-push: 90%;
+$medium-push: 60%;
+
+.container{
+  width:100%;
+  transition: all 0.4s cubic-bezier(.77,.06,.28,.85);
+  &.push{
+    margin-left: -$menu-push;
+    overflow: hidden;
+
+    &:after {
+      opacity: 0.7;
+    }
+
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    transition: all 0.8s ease;
+    width: 100%;
+    height: 100%;
+    background: $color-black;
+    opacity: 0;
+    z-index: 14;
+    top:0;
+    left: 0;
+    transition: all 0.5s ease;
+  }
+}
+
+.menu-item {
+  @include display-flex;
+  @include flex-justify-content(space-between);
+  @include flex-align-items(center);
+  padding: 15px 0;
+  text-transform: uppercase;
+  border-bottom: 1px solid $color-border;
+  color: $color-heading;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:after {
+    content: '';
+    background-image: url('../images/chevron.svg');
+    display: inline-block;
+    width: 6px;
+    height: 10px;
+    background-repeat: no-repeat;
+  }
+}
+
+.menu-wrapper {
+  margin-top: 40px;
+}
+
+#menu-trigger{
+  position: absolute;
+  top: 35px;
+  right: 20px;
+  z-index:999;
+  transition: all 0.5s ease;
+
+  div{
+    position: relative;
+    display:block;
+    height: 3px;
+    margin-bottom: 7px;
+    width: 40px;
+    background: $color-white;
+    transition: all 0.5s ease;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    div {
+      &:nth-child(even) {
+        width:35px;
+
+      }
+    }
+  }
+
+  &.clicked{
+
+    div {
+      background: $color-body;
+
+      &:nth-child(even) {
+        opacity:0;
+
+      }
+      &:nth-child(1) {
+        transform: rotate(45deg);
+        top: 9px;
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+        top:-12px;
+      }
+      &:hover{
+        div{
+          width:40px;
+        }
+      }
+    }
+  }
+}
+
+.hide-logo {
+  opacity: 0;
+}
+
+
+.menu{
+  position:fixed;
+  top:0px;
+  right: -$menu-push;
+  width: $menu-push;
+  height: 100vh;
+  padding: 20px 30px;
+  z-index: 15;
+  background: $color-white;
+  transition: all 0.4s #{$cubic};
+  &.open{
+    right:0;
+    box-shadow: 1px 0px 5px black;
+  }
+
+  .bottom-menu {
+    text-align: center;
+  }
+
+  .hearts {
+    margin: u(4) 0;
+  }
+}
+
+.menu-tint{
+  position: fixed;
+  width:100%;
+  height:100%;
+  background: $color-black;
+  opacity:0;
+  z-index: -1;
+  transition: all 0.4s #{$cubic};
+  &.open{
+    opacity:0.15;
+    z-index: 16;
+  }
+}
+
+
+.header {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: u(3);
+  left: 0;
+  z-index: 30;
+  padding-top: 0;
+
+  .btn {
+
+    &.sec {
+      font-size: 13px;
+      padding: u(1/2) u(1.5);
+    }
+  }
+
+  .page-width {
+    padding: 0 u(2);
+  }
+}
+
+
+.header-wrapper {
+  @include display-flex;
+  @include flex-align-items(center);
+}
+
+.menu-list {
+  @include display-flex;
+  color: $color-white;
+  flex-grow: 1;
+
+  .menu-list-item {
+      margin: 0 u(2);
+
+      &:first-child {
+        margin-left: u(4);
+      }
+
+      a {
+        color: $color-white;
+      }
+  }
+}
+
+
+
+@media screen and (min-width: $screen-medium) {
+
+  .menu {
+    right: 0;
+    width: 0;
+    display: none;
+  }
+
+  .container {
+    &.push {
+      margin-left: 0;
+    }
+  }
+
+  .menu-trigger {
+    display:none;
+  }
+
+  .header {
+    display: block;
+  }
+}
+
+
+@media screen and (min-width: $screen-large) {
+
+  .header {
+    top: u(5);
+  }
+
+  .menu-list {
+    .menu-list-item {
+      font-size: 16px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

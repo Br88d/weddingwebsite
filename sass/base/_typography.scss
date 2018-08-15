@@ -1,0 +1,62 @@
+// -- font
+
+
+@font-face {
+    font-family: 'pacificoregular';
+    src: url('../font/pacifico.woff2') format('woff2'),
+         url('../font/pacifico.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: $body-font;
+    src: url('../../sf-compact-display-regular-webfont.woff2') format('woff2'),
+         url('../../sf-compact-display-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@media screen and (min-width: $screen-medium) {
+    body {
+        font-size: 16px;
+    }
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $header-font;
+    color: $color-heading;
+    font-weight: $type-weight-light;
+
+    &.negative {
+        color: $color-white;
+    }
+;}
+
+
+
+
+
+// -- paragraph
+
+p {
+    margin: 0;
+}
+
+
+
+
+
